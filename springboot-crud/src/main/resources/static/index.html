@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styleForm.css" />
+     <link rel="icon" type="image/png" href="YO.png"/>
+    <title>Formulario</title>
+</head>
+<body>
+    <header>
+        <ul id="menu">
+            <li><a href="#">Consultar Producto</a></li>
+            <li><a href="/aprendiendo-css/Formulario/Formulario.html">Insertar Producto</a></li>
+            <li><a href="#">Modificar Producto</a></li>
+            <li><a href="#">Eliminar Producto</a></li>
+        </ul>
+        <h1>FORMULARIO DE CARGA DE PRODUCTO</h1>
+    </header>
+    <main>
+        <section>
+            <article id="usuario">
+                <form id="productoForm">
+                    <label>Nombre</label>
+                    <input type="text" name="nombre" id="nombre"/>
+
+                    <label>Precio</label>
+                    <input type="number" name="precio" id="precio"/>
+
+                    <label>Descripcion</label>
+                    <input type="text" name="descripcion" id="descripcion"/>
+
+                    <input type="submit" value="Enviar" id="btn"/>
+                </form>
+            </article>
+
+            <article id="saludo">
+                <h2>Favor, ingrese los datos del producto en el formulario.</h2>
+            </article>
+
+        </section>
+    </main>
+    
+    <footer></footer>
+
+    <!--  SCRIPT QUE ENVÍA EL POST A SPRING BOOT -->
+    <script>
+        document.getElementById("productoForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita el envío tradicional del formulario
+
+            const product = {
+                name: document.getElementById("nombre").value,
+                price: Number(document.getElementById("precio").value),
+                description: document.getElementById("descripcion").value
+            };
+
+            fetch("/productos/post", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(product)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error al enviar los datos");
+                }
+                return response.json();
+            })
+            .then(data => {
+                alert("Producto cargado con éxito: " + JSON.stringify(data));
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Hubo un problema al cargar el producto");
+            });
+        });
+    </script>
+
+</body>
+</html>

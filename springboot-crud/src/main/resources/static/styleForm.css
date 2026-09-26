@@ -1,0 +1,190 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;/* Fuente a todo el doc */
+    color: white;
+    background-color: black;
+    /* margin: 0px;  Saca el margen a todos los elementos. */
+    /* padding: 0px; Margen interno. */
+}
+h1{
+    color: white;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    /*margin-left: 287px; manda a la ver el fondo*/
+}
+h1:hover{
+    color: red;
+}
+h2{
+    margin-top: 10px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    font-weight:500;
+    text-align: center;
+}
+
+a{
+    
+    color: white;
+    font-size: 20px;
+    padding: auto;
+    text-decoration: none;
+    
+}
+a:hover{
+    color: red;
+}
+ul {
+    list-style: none;
+    text-align: right; 
+    padding: 0;
+    margin: 0;
+}
+li{  
+    display: inline-block;
+    margin-left: 30px;
+    margin-bottom: 0px; 
+}
+
+
+label{
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#usuario form{
+    border: 5px solid white;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding: 20px; /*Para que se separe de los bordes*/
+}
+
+#usuario form *{
+    display: block;
+}
+
+/*Regla de atributo: Se elige a los atributos*/
+input[type="text"]{
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 650px; /*ancho*/
+}
+
+input[type="number"]{
+    margin-bottom: 15px;
+    padding: 5px;
+    width: 650px; /*ancho*/
+}
+
+input[type="submit"]{
+    background: white;
+    color: red;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 1px solid red;
+    cursor: pointer;/*transforma al cursor de mano*/
+
+}
+
+/*Selectores de Hijo Cambiaba el color de los mayores*/
+/* antes
+ <ul>
+                <li><a href="#">HTML</a></li>
+                <li><a href="#">CSS</a></li>
+                <li><a href="#">LESS</a></li>
+</ul>
+<li><a href="#">Contacto</a></li>
+#menu > li > a{
+    color: red;
+    font-size: 20px;
+    padding: auto;
+    text-decoration: none;
+    list-style: none;
+}
+#menu {
+    list-style: none;
+    text-align: right; 
+    padding: 0;
+    margin: 0;
+}
+
+li{
+   list-style: none; 
+}
+li{  
+    display: inline-block;
+    margin-left: 30px;
+    margin-bottom: 0px; 
+}
+a{
+    list-style: none;
+    text-decoration: none;
+}
+*/
+/*
+a{
+    
+    color: white;
+    font-size: 20px;
+    padding: auto;
+    text-decoration: none;
+    
+}
+a:hover{
+    color: red;
+}
+ul {
+    list-style: none;
+    text-align: right; 
+    padding: 0;
+    margin: 0;
+}
+li{  
+    display: inline-block;
+    margin-left: 30px;
+    margin-bottom: 0px; 
+}
+*/
+
+/*Los que estan mas abajo tienen mayor prioridad y cuando es mas especifico*/
+#saludo h2{
+    color: blue;
+}
+
+h2{
+    color: red;
+}
+
+/*important da mas prioridad que los demas*/
+h2{
+    color: white !important;
+}
+
+.sex{
+    margin-bottom: 15px;
+}
+
+label{
+    font-weight: 500;
+}
+
+input[type="radio"]{
+    margin-bottom: 2px;
+    margin-top: 4px;
+
+}
+
+#usuario form .sex *{
+  display: initial; 
+  margin-bottom: 15px;      /* o quitar “block” para estos */
+}

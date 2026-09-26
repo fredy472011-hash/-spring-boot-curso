@@ -1,0 +1,38 @@
+# Compilados de Maven
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+*.class
+*.jar
+*.war
+
+# Secretos - NUNCA subir
+.env
+*.env
+client.cfg
+application-local.properties
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.apt_generated
+.factorypath
+.springBeans
+.sts4-cache
+
+# Maven wrapper
+.mvn/wrapper/maven-wrapper.jar
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Logs
+*.log

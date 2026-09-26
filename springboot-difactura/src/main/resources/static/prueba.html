@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="images.jpeg"/>
+  <title>Factura</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+  <link rel="stylesheet" href="estilos.css"/>
+</head>
+<body class="bg-dark text-white">
+    <header class="container text-center text-white">
+        <img src="images.jpeg" alt="Logo" width="450" height="250"/>
+        <h1>Bienvenido al programa.</h1>
+        <h2>Por favor, ingrese sus datos.</h2>
+    </header>
+    <main>
+        <section>
+            <article  class="container text-left">
+                    <form id="formulario">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido:</label>
+                            <input type="text" class="form-control" id="apellido" name="apellido" required>
+                        </div>
+                        <button id="btn" type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                    <section id="resultado" class="container mt-4 d-none"></section>
+            </article>
+        </section>
+        <footer class="container text-center">
+        </footer>
+    </main>
+    <script>
+        document.getElementById('formulario').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = {
+            nombre: document.getElementById('nombre').value,
+            apellido: document.getElementById('apellido').value
+        };
+        const resp = await fetch('/invoices/guardar', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+        const json = await resp.json();
+         // Oculta el form y muestra el resultado con estilos Bootstrap
+        document.getElementById('formulario').classList.add('d-none');
+        const resultado = document.getElementById('resultado');
+        resultado.classList.remove('d-none');
+        resultado.innerHTML = `
+        <div class="card text-bg-dark border-secondary shadow-sm">
+            <div class="card-body">
+            <h1 class="display-6 text-info text-center mb-4">Factura generada</h1>
+            <dl class="row mb-0">
+                <dt class="col-sm-3 text-secondary">Nombre</dt>
+                <dd class="col-sm-9 fw-semibold text-white">${json.nombre}</dd>
+
+                <dt class="col-sm-3 text-secondary">Apellido</dt>
+                <dd class="col-sm-9 fw-semibold text-white">${json.apellido}</dd>
+            </dl>
+            <button class="btn btn-outline-info mt-3" onclick="location.reload()">Nueva factura</button>
+            </div>
+        </div>
+        `;
+
+        });
+    </script>
+</body>
+</html>
