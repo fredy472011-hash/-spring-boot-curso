@@ -32,5 +32,12 @@ public class GreetingController {
         ));
     }
     
+    @GetMapping("/greetingError")
+    public ResponseEntity<?> greetingError() {
+        // un map es un colection
+        return ResponseEntity.ok(Collections.singletonMap("greeting",
+            greetingService.sayHelloError()
+        ));
+    }
 
 }

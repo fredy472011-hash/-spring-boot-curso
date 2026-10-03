@@ -9,7 +9,13 @@ public class GreetingServiceImpl implements GreetingService{
     public String sayHello(String person, String phrase) {
         String greeting = phrase + " " + person;
         return  greeting;
-
     }
+
+    @Override
+    public String sayHelloError() {
+       throw new RuntimeException("Error de prueba de pointcut");
+    }
+
+    
 
 }
