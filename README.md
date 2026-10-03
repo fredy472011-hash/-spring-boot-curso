@@ -1,6 +1,6 @@
 # Spring Boot — proyectos de aprendizaje
 
-Cinco proyectos construidos siguiendo el curso *Spring Boot & Spring Framework de cero a experto* de Andrés Guzmán, más un frontend propio.
+Cinco proyectos construidos.
 
 **Stack:** Java 21 · Spring Boot 3.5 · Spring Data JPA · Hibernate · MySQL 8 · Maven
 
